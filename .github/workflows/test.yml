@@ -5,12 +5,12 @@ on:
       - develop
 jobs:
   Test1:
-  runs-on: ubuntu-latest
-  steps:
-    - run: echo "Test"
-    - name: "Checkout"
-      uses: actions/checkout@v2
-    - name: "List files"
-      run: |
-        ls ${{ gihub.workspace }}
-    - run: echo "{{ job.status }}"
+    runs-on: ubuntu-lates
+    steps:
+      - run: echo "Test"
+      - name: "Checkout"
+        uses: actions/checkout@v2
+      - name: "List files"
+        run: |
+          ls ${{ gihub.workspace }}
+      - run: echo "{{ job.status }}"
