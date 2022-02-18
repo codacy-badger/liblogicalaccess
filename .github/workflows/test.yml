@@ -1,0 +1,16 @@
+name: Test Github Actions
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  Test1:
+  runs-on: unbuntu-latest
+  steps:
+    - run: echo "Test"
+    - name: "Checkout"
+      uses: actions/checkout@v2
+    - name: "List files"
+      run: |
+        ls ${{ gihub.workspace }}
+    - run: echo "{{ job.status }}"
