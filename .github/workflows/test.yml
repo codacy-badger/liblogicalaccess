@@ -12,5 +12,5 @@ jobs:
         uses: actions/checkout@v2
       - name: "List files"
         run: |
-          ls ${{ gihub.workspace }}
+          ls ${{ github.workspace }}
       - run: echo "{{ job.status }}"
