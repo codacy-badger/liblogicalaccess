@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 jobs:
   Test1:
-    runs-on: ubuntu-lates
+    runs-on: ubuntu-latest
     steps:
       - run: echo "Test"
       - name: "Checkout"
