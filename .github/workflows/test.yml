@@ -21,6 +21,7 @@ jobs:
           conan build ..
       - name: "Test"
         run: |
+          cd build
           ctest
   coverity:
     runs-on: ubuntu-latest
