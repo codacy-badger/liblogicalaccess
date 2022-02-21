@@ -7,7 +7,7 @@ class LLAConan(ConanFile):
     url = "https://github.com/islog/liblogicalaccess"
     description = "ISLOG RFID library"
     settings = "os", "compiler", "build_type", "arch"
-    requires = 'boost/1.76.0', 'openssl/1.1.1l', 'jsonformoderncpp/3.6.1@vthiery/stable', 'zlib/1.2.11'
+    requires = 'boost/1.76.0', 'openssl/1.1.1l', 'nlohmann_json/3.9.1', 'zlib/1.2.11'
     generators = "cmake"
     options = {'LLA_BUILD_IKS': [True, False],
                'LLA_BUILD_PKCS': [True, False],
@@ -45,9 +45,9 @@ class LLAConan(ConanFile):
         if self.options.LLA_BUILD_IKS:
             self.requires('grpc/1.39.1')
         if self.options.LLA_BUILD_UNITTEST:
-            self.requires('gtest/1.8.1@bincrafters/stable')
+            self.requires('gtest/1.8.1')
         if self.options.LLA_BUILD_PKCS:
-            self.requires('cppkcs11/1.1@islog/master')
+            self.requires('cppkcs11/1.1')
 
     def imports(self):
         if tools.os_info.is_windows:
@@ -128,10 +128,6 @@ class LLAConan(ConanFile):
         # Linux / Windows common plugins.
         self.cpp_info.libs.append('llacommon')
         self.cpp_info.libs.append('logicalaccess-cryptolib')
-        self.cpp_info.libs.append('a3mlgm5600readers')
-        self.cpp_info.libs.append('admittoreaders')
-        self.cpp_info.libs.append('axesstmc13readers')
-        self.cpp_info.libs.append('axesstmclegicreaders')
         self.cpp_info.libs.append('cps3cards')
         self.cpp_info.libs.append('deisterreaders')
         self.cpp_info.libs.append('desfirecards')
@@ -140,11 +136,9 @@ class LLAConan(ConanFile):
         self.cpp_info.libs.append('em4135cards')
         self.cpp_info.libs.append('felicacards')
         self.cpp_info.libs.append('generictagcards')
-        self.cpp_info.libs.append('gigatmsreaders')
         self.cpp_info.libs.append('gunneboreaders')
         self.cpp_info.libs.append('icode1cards')
         self.cpp_info.libs.append('icode2cards')
-        self.cpp_info.libs.append('idondemandreaders')
         self.cpp_info.libs.append('indalacards')
         self.cpp_info.libs.append('infineonmydcards')
         self.cpp_info.libs.append('iso15693cards')
@@ -158,16 +152,11 @@ class LLAConan(ConanFile):
         self.cpp_info.libs.append('ok5553readers')
         self.cpp_info.libs.append('osdpreaders')
         self.cpp_info.libs.append('pcscreaders')
-        self.cpp_info.libs.append('promagreaders')
         self.cpp_info.libs.append('proxcards')
         self.cpp_info.libs.append('proxlitecards')
-        self.cpp_info.libs.append('rplethreaders')
         self.cpp_info.libs.append('samav2cards')
-        self.cpp_info.libs.append('scielreaders')
         self.cpp_info.libs.append('seoscards')
         self.cpp_info.libs.append('smartframecards')
-        self.cpp_info.libs.append('smartidreaders')
-        self.cpp_info.libs.append('stidprgreaders')
         self.cpp_info.libs.append('stidstrreaders')
         self.cpp_info.libs.append('stmlri512cards')
         self.cpp_info.libs.append('tagitcards')
