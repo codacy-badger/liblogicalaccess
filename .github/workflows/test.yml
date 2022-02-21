@@ -35,3 +35,8 @@ jobs:
           mkdir build
           cd build
           conan install .. -o LLA_BUILD_UNITTEST=True
+      - uses: vapier/coverity-scan-action@v1
+        with:
+          email: ${{ secrets.COVERITY_SCAN_EMAIL }}
+          token: ${{ secrets.COVERITY_SCAN_TOKEN }}
+          command: conan build ..
