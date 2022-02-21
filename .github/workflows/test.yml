@@ -5,25 +5,21 @@ on:
       - develop
   workflow_dispatch:
 jobs:
-  setup:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: |
+
+      - name: "Setup"
+        run: |
           sudo apt install -y libpcsclite-dev
           pip3 install conan
-  build:
-    needs: setup
-    runs-on: ubuntu-latest
-    streps:
-      - run: |
+      - uses: actions/checkout@v2
+      - name: "Build"
+        run: |
           mkdir build
           cd build
           conan install .. -o LLA_BUILD_UNITTEST=True
           conan build ..
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    streps:
-      - run: |
+      - name: "Test"
+        run: |
           ctest
