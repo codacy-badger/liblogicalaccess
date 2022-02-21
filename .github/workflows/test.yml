@@ -9,9 +9,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Test"
+      - run: |
+          sudo apt update
+          sudo apt upgrade
+          sudo apt install -y libpcsclite-dev
+      - name: "Install conan"
+        run: |
+          pip3 install conan
       - name: "Checkout"
         uses: actions/checkout@v2
       - name: "List files"
         run: |
           ls ${{ github.workspace }}
-      - run: echo "{{ job.status }}"
+      - name: "Build"
+        run: |
+          mkdir build
+          cd build
+          conan install .. -o LLA_BUILD_UNITTEST=True
+          conan build ..
+      - run: echo "{{ $job.status }}"
