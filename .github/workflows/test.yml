@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - develop
+  workflow_dispatch:
 jobs:
   Test1:
     runs-on: ubuntu-lates
