@@ -24,7 +24,7 @@ jobs:
           ctest
   coverity:
     runs-on: ubuntu-latest
-    steps:  
+    steps:
       - name: "Setup"
         run: |
           sudo apt install -y libpcsclite-dev
