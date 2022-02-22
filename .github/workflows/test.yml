@@ -7,6 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        compiler: [gcc, clang]
     steps:
       - name: "Setup"
         run: |
@@ -14,6 +17,9 @@ jobs:
           pip3 install conan
       - uses: actions/checkout@v2
       - name: "Build"
+        env:
+          CC: ${{ matrix.compiler }}
+          CXX: ${{ matrix.compiler }}
         run: |
           mkdir build
           cd build
