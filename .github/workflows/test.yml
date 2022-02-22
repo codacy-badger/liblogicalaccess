@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        compiler: [gcc, clang]
+        compiler: [gcc]
     steps:
       - name: "Setup"
         run: |
@@ -29,22 +29,16 @@ jobs:
         run: |
           cd build
           ctest
-  coverity:
+  codacy-analysis-cli:
     runs-on: ubuntu-latest
     steps:
-      - name: "Setup"
-        run: |
-          sudo apt install -y libpcsclite-dev
-          pip3 install conan
-      - uses: actions/checkout@v2
-      - name: "Build"
-        run: |
-          mkdir build
-          cd build
-          conan install .. -o LLA_BUILD_UNITTEST=True
-      - uses: vapier/coverity-scan-action@v1
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Codacy Analysis CLI
+        uses: codacy/codacy-analysis-cli-action@master
         with:
-          email: ${{ secrets.COVERITY_SCAN_EMAIL }}
-          token: ${{ secrets.COVERITY_SCAN_TOKEN }}
-          project: "islog/liblogicalaccess"
-          command: conan build ..
+          #tool: <CLIENT_SIDE_TOOL_NAME>
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          upload: true
+          max-allowed-issues: 2147483647
