@@ -7,13 +7,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        compiler: [gcc]
     steps:
       - name: "Setup"
         run: |
-          sudo apt install -y libpcsclite-dev
+          sudo apt-get install -y libpcsclite-dev
           pip3 install conan
       - uses: actions/checkout@v2
       - name: "Build"
