@@ -43,17 +43,18 @@ jobs:
 
   build-windows:
     runs-on: windows-latest
-    - uses: actions/checkout@v2
-    - name: "Build"
-      run: |
-        mkdir build
-        cd build
-        conan install .. -o LLA_BUILD_UNITTEST=True
-        conan build ..
-    - name: "Test"
-      run: |
-        cd build
-        ctest
+    steps:
+      - uses: actions/checkout@v2
+      - name: "Build"
+        run: |
+          mkdir build
+          cd build
+          conan install .. -o LLA_BUILD_UNITTEST=True
+          conan build ..
+      - name: "Test"
+        run: |
+          cd build
+          ctest
 
   codacy-analysis-cli:
     runs-on: ubuntu-latest
