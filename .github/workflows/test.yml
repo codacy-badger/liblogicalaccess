@@ -29,6 +29,12 @@ jobs:
           cd build
           conan install .. -s compiler=${{ matrix.compiler.name }} -s compiler.version=${{ matrix.compiler.version }} -o LLA_BUILD_UNITTEST=True --build=missing
           conan build ..
+        if: matrix.compiler.name == 'gcc'
+        run: |
+          mkdir build
+          cd build
+          conan install .. -s compiler=${{ matrix.compiler.name }} -s compiler.version=${{ matrix.compiler.version }} -o LLA_BUILD_UNITTEST=True --build=missing
+          conan build ..
       - name: "Test"
         run: |
           cd build
