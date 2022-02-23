@@ -19,7 +19,7 @@ jobs:
           sudo apt-get install -y libpcsclite-dev
           pip3 install conan
       - uses: actions/checkout@v2
-      - name: "Build"
+      - name: "Build with clang"
         if: matrix.compiler.name == 'clang'
         env:
           CC: /usr/bin/clang
@@ -29,6 +29,7 @@ jobs:
           cd build
           conan install .. -s compiler=${{ matrix.compiler.name }} -s compiler.version=${{ matrix.compiler.version }} -o LLA_BUILD_UNITTEST=True --build=missing
           conan build ..
+      - name: "Build with gcc"
         if: matrix.compiler.name == 'gcc'
         run: |
           mkdir build
