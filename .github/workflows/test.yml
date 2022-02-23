@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        comipler:
+        compiler:
           - { name: clang, version: 10 }
           - { name: gcc, version: 9 }
     steps:
