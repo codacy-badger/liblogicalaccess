@@ -23,7 +23,7 @@ jobs:
         if: matrix.compiler.name == 'clang'
         env:
           CC: /usr/bin/clang
-          CXX: /user/bin/clang++
+          CXX: /usr/bin/clang++
         run: |
           mkdir build
           cd build
