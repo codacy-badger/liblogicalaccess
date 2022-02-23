@@ -7,20 +7,23 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        comipler:
+          - { name: clang, version: 10 }
+          - { name: gcc, version: 9 }
     steps:
       - name: "Setup"
         run: |
+          sudo apt-get update
           sudo apt-get install -y libpcsclite-dev
           pip3 install conan
       - uses: actions/checkout@v2
       - name: "Build"
-        env:
-          CC: ${{ matrix.compiler }}
-          CXX: ${{ matrix.compiler }}
         run: |
           mkdir build
           cd build
-          conan install .. -o LLA_BUILD_UNITTEST=True
+          conan install .. -s compiler=${{ matrix.compiler.name }} -s compiler.version=${{ matrix.compiler.version }} -o LLA_BUILD_UNITTEST=True
           conan build ..
       - name: "Test"
         run: |
