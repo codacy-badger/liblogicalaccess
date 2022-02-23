@@ -52,7 +52,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          conan install .. -s compiler.version=14 -o LLA_BUILD_UNITTEST=True --build=missing
+          conan install .. -s compiler.version=15 -o LLA_BUILD_UNITTEST=True --build=missing
           conan build ..
       - name: "Test"
         run: |
