@@ -10,8 +10,8 @@ jobs:
     strategy:
       matrix:
         compiler:
-          - { name: clang, version: 10 }
           - { name: gcc, version: 9 }
+          - { name: clang, version: 11 }
     steps:
       - name: "Setup"
         run: |
@@ -23,7 +23,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          conan install .. -s compiler=${{ matrix.compiler.name }} -s compiler.version=${{ matrix.compiler.version }} -o LLA_BUILD_UNITTEST=True
+          conan install .. -s compiler=${{ matrix.compiler.name }} -s compiler.version=${{ matrix.compiler.version }} -o LLA_BUILD_UNITTEST=True --build=missing
           conan build ..
       - name: "Test"
         run: |
