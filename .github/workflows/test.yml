@@ -44,6 +44,9 @@ jobs:
   build-windows:
     runs-on: windows-latest
     steps:
+      - name: "Setup"
+        run: |
+          pip3 install conan
       - uses: actions/checkout@v2
       - name: "Build"
         run: |
