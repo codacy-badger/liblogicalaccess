@@ -57,7 +57,7 @@ jobs:
       - name: "Test"
         run: |
           cd build
-          ctest
+          ctest -V -C Release
 
   codacy-analysis-cli:
     runs-on: ubuntu-latest
