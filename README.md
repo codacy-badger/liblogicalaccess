@@ -14,6 +14,7 @@ Welcome to the LibLogicalAccess project web page, an open source RFID library de
 
   * Stable branch: master [![Build Status](https://img.shields.io/travis/islog/liblogicalaccess/master.svg?label=Travis-CI)](https://travis-ci.org/islog/liblogicalaccess) [![Build status](https://img.shields.io/appveyor/ci/Liryna/liblogicalaccess/master.svg?label=AppVeyor)](https://ci.appveyor.com/project/Liryna/liblogicalaccess/branch/master)
   * Development branch: develop [![Build Status](https://img.shields.io/travis/islog/liblogicalaccess/develop.svg?label=Travis-CI)](https://travis-ci.org/islog/liblogicalaccess) [![Build status](https://img.shields.io/appveyor/ci/Liryna/liblogicalaccess/develop.svg?label=AppVeyor)](https://ci.appveyor.com/project/Liryna/liblogicalaccess/branch/develop)
+  ![example branch parameter](https://github.com/aberod/liblogicalaccess/actions/workflows/test.yml/badge.svg?branch=develop)
   * Features branches: feature-*
 
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/2286/badge.svg)](https://scan.coverity.com/projects/2286)
